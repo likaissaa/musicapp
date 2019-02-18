@@ -3,11 +3,13 @@ import storage from 'good-storage'
 const SEARCH_KEY = '__search__'
 const SEARCH_MAX_LEN = 15
 
-const PLAY_KEY = '__play__'
+const PLAY_KEY = '__play__' // 最近播放 200 首歌曲
 const PLAY_MAX_LEN = 200
 
 const FAVORITE_KEY = '__favorite__'
 const FAVORITE_MAX_LEN = 200
+
+
 
 // arr ：传入的数组 val 传入的值 对比 以及最大长度
 function insertArray(arr, val, compare, maxLen) {
@@ -62,15 +64,15 @@ export function loadSearch() { // 从本地缓存去读取我们的查询列表
 export function savePlay(song) {
   let songs = storage.get(PLAY_KEY, [])
   insertArray(songs, song, (item) => {
-    return song.id === item.id
+    return item.id === song.id
   }, PLAY_MAX_LEN)
   storage.set(PLAY_KEY, songs)
   return songs
 }
-
 export function loadPlay() {
   return storage.get(PLAY_KEY, [])
 }
+
 
 export function saveFavorite(song) {
   let songs = storage.get(FAVORITE_KEY, [])

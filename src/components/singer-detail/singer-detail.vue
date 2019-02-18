@@ -1,34 +1,32 @@
 <template>
   <transition name="slide">
-    <music-list :songs="songs" :title="title" :bg-image="bgImage"></music-list>
+    <music-list :title="title" :bg-image="bgImage" :songs="songs"></music-list>
   </transition>
 </template>
 
 <script type="text/ecmascript-6">
+  import MusicList from '@/components/music-list/music-list'
   import { getSingerDetail } from 'api/singer'
   import { ERR_OK } from 'api/config'
+  import { createSong, isValidMusic, processSongsUrl } from 'common/js/song'
   import { mapGetters } from 'vuex'
-  import { createSong, isValidMusic, processSongsUrl} from 'common/js/song'
-  import MusicList from '@/components/music-list/music-list'
+
   export default {
-    components: {
-      'music-list': MusicList},
-    data() {
-      return {
-        songs: []
-      }
-    },
     computed: {
       title() {
         return this.singer.name
       },
       bgImage() {
-        console.log(this.singer)
         return this.singer.avatar
       },
       ...mapGetters([
         'singer'
       ])
+    },
+    data() {
+      return {
+        songs: []
+      }
     },
     created() {
       this._getDetail()
@@ -58,12 +56,14 @@
         })
         return ret
       }
+    },
+    components: {
+      MusicList
     }
   }
 </script>
 
 <style scoped lang="stylus" rel="stylesheet/stylus">
-  @import "~common/stylus/variable"
   .slide-enter-active, .slide-leave-active
     transition: all 0.3s
 

@@ -11,7 +11,7 @@ export const playlistMixin = {
   mounted() {
     this.handlePlaylist(this.playlist)
   },
-  activated() { // keep alive  触发
+  activated() {
     this.handlePlaylist(this.playlist)
   },
   watch: {
@@ -25,7 +25,7 @@ export const playlistMixin = {
     }
   }
 }
-// playermixin 什么需要共享 1：icon 的随机顺序 共享 2：icon 的playmode 3：
+
 export const playerMixin = {
   computed: {
     iconMode() {
@@ -37,7 +37,10 @@ export const playerMixin = {
       'currentSong',
       'mode',
       'favoriteList'
-    ])
+    ]),
+    favoriteIcon() {
+      return this.getFavoriteIcon(this.currentSong)
+    }
   },
   methods: {
     changeMode() {
@@ -104,7 +107,8 @@ export const searchMixin = {
   },
   methods: {
     onQueryChange(query) {
-      this.query = query
+      // 处理带空格的情况
+      this.query = query.trim()
     },
     blurInput() {
       this.$refs.searchBox.blur()

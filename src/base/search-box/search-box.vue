@@ -36,7 +36,7 @@
         blur() {
           this.$refs.query.blur()
         },
-        debounce(func, delay) {
+         debounce(func, delay) {
           let timer
 
           return function (...args) {

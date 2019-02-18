@@ -9,5 +9,9 @@ export const SET_CURRENTINDEX = 'SET_CURRENTINDEX'
 // 歌单
 export const SET_DISC = 'SET_DISC'
 export const SET_TOP_LIST = 'SET_TOP_LIST'
-// 历史
+// 查询历史
 export const SET_SEARCH_HISTORY = 'SET_SEARCH_HISTORY'
+// 播放历史
+export const SET_PLAY_HISTORY = 'SET_PLAY_HISTORY'
+
+//
