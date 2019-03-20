@@ -97,7 +97,7 @@ export const searchMixin = {
   data() {
     return {
       query: '',
-      refreshDelay: 120
+      refreshDelay: 100
     }
   },
   computed: {

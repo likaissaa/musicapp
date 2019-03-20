@@ -16,7 +16,7 @@
               <i class="current" :class="getCurrentIcon(item)"></i>
               <span class="text" v-html="item.name"></span>
               <span @click.stop="toggleFavorite(item)" class="like">
-                <i></i>
+                <i  :class="getFavoriteIcon(item)"></i>
               </span>
               <span @click.stop="deleteOne(item)" class="delete">
                 <i class="icon-delete"></i>
@@ -53,7 +53,7 @@
     data() {
       return {
         showFlag: false,
-        refreshDelay: 120
+        refreshDelay: 100
       }
     },
     computed: {

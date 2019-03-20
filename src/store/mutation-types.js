@@ -14,4 +14,5 @@ export const SET_SEARCH_HISTORY = 'SET_SEARCH_HISTORY'
 // 播放历史
 export const SET_PLAY_HISTORY = 'SET_PLAY_HISTORY'
 
-//
+// 收藏列表
+export const SET_FAVORITE_LIST = 'SET_FAVORITE_LIST'

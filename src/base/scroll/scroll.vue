@@ -31,6 +31,10 @@
       beforeScroll: {
         type: Boolean, // 滚动开始派发的事件
         default: false
+      },
+      refreshDelay: {
+        type: Number,
+        default: 20
       }
     },
     mounted() {
@@ -87,7 +91,7 @@
       data() {
         setTimeout(() => {
           this.refresh()
-        }, 20)
+        }, this.refreshDelay)
       }
     }
   }

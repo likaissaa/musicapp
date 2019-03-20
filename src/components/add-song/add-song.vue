@@ -13,7 +13,7 @@
       <div class="shortcut" v-show="!query">
         <switches :switches="switches" :currentIndex="currentIndex" @switch="switchItem"></switches>
         <div class="list-wrapper">
-          <scroll ref="songList" v-if="currentIndex===0" class="list-scroll" :data="playHistory">
+          <scroll ref="songList" v-if="currentIndex===0" class="list-scroll" :data="playHistory" :refreshDelay="refreshDelay">
             <div class="list-inner">
               <song-list :songs="playHistory" @select="selectSong">
               </song-list>
@@ -95,15 +95,18 @@
       selectSong(song, index) {
         if (index !== 0) {
           this.insertSong(new Song(song))
-          this.$refs.topTip.show()
+          this.showTip()
         }
       },
       selectSuggest() {
-        this.$refs.topTip.show()
+        this.showTip()
         this.saveSearch()
       },
       switchItem(index) {
         this.currentIndex = index
+      },
+      showTip() {
+        this.$refs.topTip.show()
       },
       ...mapActions([
         'insertSong'

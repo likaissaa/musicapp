@@ -10,7 +10,6 @@ const FAVORITE_KEY = '__favorite__'
 const FAVORITE_MAX_LEN = 200
 
 
-
 // arr ：传入的数组 val 传入的值 对比 以及最大长度
 function insertArray(arr, val, compare, maxLen) {
   const index = arr.findIndex(compare) // 返回第一个符合 比较成员的位置
@@ -83,6 +82,9 @@ export function saveFavorite(song) {
   return songs
 }
 
+// export function saveFavorite(song) {let songs = storage.get(FAVORITE_KEY, []), insertArray(songs, song, (item) => {
+// return song})}
+
 export function deleteFavorite(song) {
   let songs = storage.get(FAVORITE_KEY, [])
   deleteFromArray(songs, (item) => {
@@ -95,4 +97,3 @@ export function deleteFavorite(song) {
 export function loadFavorite() {
   return storage.get(FAVORITE_KEY, [])
 }
-

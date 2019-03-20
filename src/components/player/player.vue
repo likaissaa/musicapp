@@ -73,7 +73,7 @@
               <i @click="next" class="icon-next"></i>
             </div>
             <div class="icon i-right">
-              <i ></i>
+              <i @click="toggleFavorite(currentSong)" class="icon" :class="getFavoriteIcon(currentSong)"></i>
             </div>
           </div>
         </div>
@@ -323,7 +323,7 @@
       },
       getLyric() {
         this.currentSong.getLyric().then((lyric) => {
-          if (this.currentSong.lyric !== lyric) {
+          if (this.currentSong.lyric !== lyric) { // 当歌的歌词不等于 歌词的时候
             return
           }
           this.currentLyric = new Lyric(lyric, this.handleLyric)
